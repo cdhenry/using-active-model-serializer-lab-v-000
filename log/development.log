@@ -2031,3 +2031,27 @@ Processing by ProductsController#index as HTML
   [1m[35mProduct Load (0.4ms)[0m  SELECT "products".* FROM "products"
   Rendered products/index.html.erb within layouts/application (2.8ms)
 Completed 200 OK in 34ms (Views: 32.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/products" for 74.68.151.51 at 2018-05-03 14:43:39 +0000
+Cannot render console from 74.68.151.51! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (4.3ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.3ms)
+
+ActionView::Template::Error (undefined method `id' for nil:NilClass):
+    1: <h1>Products</h1>
+    2: <% @products.each do |product| %>
+    3:   <h3><%=@product.id%>. <%= product.name %></h3>
+    4:   <div id="product-<%= product.id %>"><%= truncate(product.description) %></div>
+    5:   <button class="js-more" data-id="<%= product.id %>">More Info</button>
+    6: <% end %>
+  app/views/products/index.html.erb:3:in `block in _app_views_products_index_html_erb__3934911792856023552_70121602478440'
+  app/views/products/index.html.erb:2:in `_app_views_products_index_html_erb__3934911792856023552_70121602478440'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (26.3ms)
