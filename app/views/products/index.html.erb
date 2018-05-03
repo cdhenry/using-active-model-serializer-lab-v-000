@@ -14,13 +14,7 @@ $(function() {
       if(data["inventory"] === 0 || data["inventory"] === ""){
         inventoryText = "<strong>Sold Out</strong>";
       }
-
-      $.get("/products/" + id + ".json", function(inventory) {
-        var inventoryText = "<strong>Available</strong>";
-        if(inventory === 0 || inventory === ""){
-          inventoryText = "<strong>Sold Out</strong>";
-        }
-        var descriptionText = "<p>" + description + "</p><p>" + inventoryText + "</p>";
+      var descriptionText = "<p>" + data["description"] + "</p><p>" + inventoryText + "</p>";
         $("#product-" + id).html(descriptionText);
       });
     });
